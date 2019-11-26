@@ -1,5 +1,5 @@
-#ifndef CIVEC2D_H
-#define CIVEC2D_H
+#ifndef CIVEC2D_HPP
+#define CIVEC2D_HPP
 
 class CIVec2D {
 public:
