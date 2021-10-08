@@ -4,8 +4,8 @@ CXXTEST_INCLUDE=$(CXXTEST_HOME)
 
 PROGRAMS=runner
 
-CXXFLAGS=-std=c++11 -O0 -fno-inline -g -Wall -Wextra -Wpedantic -Werror -pedantic-errors
-LDFLAGS=-std=c++11
+CXXFLAGS=-std=c++17 -O0 -fno-inline -g -Wall -Wextra -Wpedantic -Werror -pedantic-errors
+LDFLAGS=-std=c++17
 
 ## for gcov
 #CXXFLAGS:=$(CXXFLAGS) -fprofile-arcs -ftest-coverage
