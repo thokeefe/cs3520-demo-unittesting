@@ -4,7 +4,7 @@ CXXTEST_INCLUDE=$(CXXTEST_HOME)
 
 PROGRAMS=runner
 
-CXXFLAGS=-std=c++17 -O0 -fno-inline -g -Wall -Wextra -Wpedantic -Werror -pedantic-errors
+CXXFLAGS=-std=c++17 -O0 -fno-inline -g -Wall -Wextra -Wpedantic -Werror -Wno-ignored-qualifiers -pedantic-errors
 LDFLAGS=-std=c++17
 
 ## for gcov
@@ -22,10 +22,10 @@ runner: runner.o Example.cxxtest.o CStrings.cxxtest.o CIVec2D.cxxtest.o CIVec2D.
 	g++ -I$(CXXTEST_INCLUDE) $(CXXFLAGS) -c $< -o $@
 
 %.cxxtest.cpp: %.cxxtest.hpp
-	$(CXXTEST_GEN) --part --error-printer $< -o $@
+	python3 $(CXXTEST_GEN) --part --error-printer $< -o $@
 
 runner.cpp:
-	$(CXXTEST_GEN) --root --error-printer -o $@
+	python3 $(CXXTEST_GEN) --root --error-printer -o $@
 
 clean:
 	rm -rf test.log *~ .vscode/*~ *.o *.dSYM $(PROGRAMS) *.gcda *.gcno *.gcov callgrind.out.* runner.cpp *.cxxtest.cpp
