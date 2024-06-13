@@ -1,3 +1,4 @@
+To get CxxTest:
 * Visit the [CxxTest repo](https://github.com/CxxTest/cxxtest/), download, and extract revision a19f85fdf9 into a folder called `cxxtest`.
   * This can be done in a terminal using:
     * `curl -o cxxtest.zip -LO https://github.com/CxxTest/cxxtest/archive/a19f85fdf90f97e16d6e3e7e3d2d68c31cd89e3c.zip`
