@@ -1,6 +1,10 @@
 #include <cxxtest/TestSuite.h>
 #include "CIVec2D.hpp"
 
+/*
+Edit CIVec2D.cxxtest.hpp to get 100% line coverage of CIVec2D.cpp.
+*/
+
 class CIVec2DTestSuite : public CxxTest::TestSuite
 {
 public:
@@ -47,4 +51,37 @@ public:
     TS_ASSERT_THROWS_ANYTHING(CIVec2D(6, 7) / 0);
   }
 
+  void testMultiplication() {
+    TS_ASSERT_EQUALS(CIVec2D(3, 4) * 2, CIVec2D(6, 8));
+    TS_ASSERT_EQUALS(CIVec2D(-1, -2) * 3, CIVec2D(-3, -6));
+    TS_ASSERT_EQUALS(CIVec2D(5, 6) * -1, CIVec2D(-5, -6));
+    TS_ASSERT_EQUALS(CIVec2D(7, 8) * 0, CIVec2D(0, 0));
+  }
+
+  void testCompoundOperators() {
+    CIVec2D v(3, 4);
+    v += CIVec2D(1, 2);
+    TS_ASSERT_EQUALS(v, CIVec2D(4, 6));
+    v -= CIVec2D(1, 1);
+    TS_ASSERT_EQUALS(v, CIVec2D(3, 5));
+    v *= 2;
+    TS_ASSERT_EQUALS(v, CIVec2D(6, 10));
+    v /= 2;
+    TS_ASSERT_EQUALS(v, CIVec2D(3, 5));
+    TS_ASSERT_THROWS_ANYTHING(v /= 0);
+  }
+
+  void testNegation() {
+    TS_ASSERT_EQUALS(-CIVec2D(3, 4), CIVec2D(-3, -4));
+    TS_ASSERT_EQUALS(-CIVec2D(-3, -4), CIVec2D(3, 4));
+    TS_ASSERT_EQUALS(-CIVec2D(0, 0), CIVec2D(0, 0));
+  }
+
+  void testDot() {
+    TS_ASSERT_EQUALS(dot(CIVec2D(0, 0), CIVec2D(5, 6)), 0);
+    TS_ASSERT_EQUALS(dot(CIVec2D(1, 0), CIVec2D(5, 6)), 5);
+    TS_ASSERT_EQUALS(dot(CIVec2D(0, 1), CIVec2D(5, 6)), 6);
+    TS_ASSERT_EQUALS(dot(CIVec2D(2, 5), CIVec2D(1, 2)), 12);
+    TS_ASSERT_EQUALS(dot(CIVec2D(1, 2), CIVec2D(-1, -2)), -5);
+  }
 };

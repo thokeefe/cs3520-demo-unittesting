@@ -17,6 +17,8 @@ public:
   friend CIVec2D operator*(int lhs, const CIVec2D & rhs);
   friend CIVec2D operator/(const CIVec2D & lhs, int rhs);
 
+  friend int dot(const CIVec2D & vec1, const CIVec2D & vec2);
+
 private:
   const int m_x, m_y;
 };

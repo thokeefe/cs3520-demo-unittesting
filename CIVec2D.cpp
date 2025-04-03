@@ -1,11 +1,7 @@
 #include "CIVec2D.hpp"
 #include <stdexcept>
 
-CIVec2D::CIVec2D(int x, int y):
-  m_x(x),
-  m_y(y)
-{
-}
+CIVec2D::CIVec2D(int x, int y): m_x(x), m_y(y) {}
 
 bool operator==(const CIVec2D & lhs, const CIVec2D & rhs) {
   return lhs.m_x == rhs.m_x && lhs.m_y == rhs.m_y;
@@ -35,6 +31,10 @@ CIVec2D operator/(const CIVec2D & lhs, int rhs) {
   if (rhs == 0) {
     throw std::invalid_argument("division by zero");
   }
-
   return CIVec2D(lhs.m_x / rhs, lhs.m_y / rhs);
+}
+
+// Implementing the dot product function
+int dot(const CIVec2D & vec1, const CIVec2D & vec2) {
+  return vec1.m_x * vec2.m_x + vec1.m_y * vec2.m_y;
 }
